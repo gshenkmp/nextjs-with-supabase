@@ -1,4 +1,10 @@
+"use client";
+
+import { useState } from 'react';
+
 export default function HomePage() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       {/* Navigation */}
@@ -22,26 +28,31 @@ export default function HomePage() {
             </div>
             {/* Mobile menu button */}
             <div className="md:hidden flex items-center">
-              <button className="text-gray-300 hover:text-blue-400 p-2">
+              <button 
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="text-gray-300 hover:text-blue-400 p-2"
+              >
                 <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               </button>
             </div>
           </div>
-          {/* Mobile menu - you'll need JavaScript to toggle this */}
-          <div className="md:hidden border-t border-gray-800">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              <a href="#" className="block px-3 py-2 text-gray-300 hover:text-blue-400">Solutions</a>
-              <a href="#" className="block px-3 py-2 text-gray-300 hover:text-blue-400">Pricing</a>
-              <a href="#" className="block px-3 py-2 text-gray-300 hover:text-blue-400">Resources</a>
-              <a href="#" className="block px-3 py-2 text-gray-300 hover:text-blue-400">About</a>
-              <a href="/login" className="block px-3 py-2 text-gray-300 hover:text-blue-400">Login</a>
-              <button className="w-full mt-2 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 font-medium">
-                Start Free Trial
-              </button>
+          {/* Mobile menu - toggles based on state */}
+          {isMobileMenuOpen && (
+            <div className="md:hidden border-t border-gray-800">
+              <div className="px-2 pt-2 pb-3 space-y-1">
+                <a href="#" className="block px-3 py-2 text-gray-300 hover:text-blue-400">Solutions</a>
+                <a href="#" className="block px-3 py-2 text-gray-300 hover:text-blue-400">Pricing</a>
+                <a href="#" className="block px-3 py-2 text-gray-300 hover:text-blue-400">Resources</a>
+                <a href="#" className="block px-3 py-2 text-gray-300 hover:text-blue-400">About</a>
+                <a href="/login" className="block px-3 py-2 text-gray-300 hover:text-blue-400">Login</a>
+                <button className="w-full mt-2 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 font-medium">
+                  Start Free Trial
+                </button>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </nav>
 
@@ -67,7 +78,7 @@ export default function HomePage() {
               </button>
             </div>
             <p className="text-sm text-gray-400 mt-4">
-              Industry-leading AI technology • Instant results • Trusted by 10,000+ professionals
+              Industry-leading AI technology • Instant Results • Trusted by 10,000+ professionals
             </p>
           </div>
         </div>
