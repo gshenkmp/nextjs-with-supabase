@@ -20,6 +20,27 @@ export default function HomePage() {
                 Get Started
               </button>
             </div>
+            {/* Mobile menu button */}
+            <div className="md:hidden flex items-center">
+              <button className="text-gray-300 hover:text-blue-400 p-2">
+                <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          {/* Mobile menu - you'll need JavaScript to toggle this */}
+          <div className="md:hidden border-t border-gray-800">
+            <div className="px-2 pt-2 pb-3 space-y-1">
+              <a href="#" className="block px-3 py-2 text-gray-300 hover:text-blue-400">Solutions</a>
+              <a href="#" className="block px-3 py-2 text-gray-300 hover:text-blue-400">Pricing</a>
+              <a href="#" className="block px-3 py-2 text-gray-300 hover:text-blue-400">Resources</a>
+              <a href="#" className="block px-3 py-2 text-gray-300 hover:text-blue-400">About</a>
+              <a href="/login" className="block px-3 py-2 text-gray-300 hover:text-blue-400">Login</a>
+              <button className="w-full mt-2 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 font-medium">
+                Start Free Trial
+              </button>
+            </div>
           </div>
         </div>
       </nav>
@@ -39,14 +60,14 @@ export default function HomePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="bg-blue-600 text-white px-8 py-4 rounded-md font-semibold hover:bg-blue-700 text-lg">
-                Get Free Property Report
+                Get Sample Report
               </button>
               <button className="border-2 border-gray-600 text-gray-300 px-8 py-4 rounded-md font-semibold hover:bg-gray-800 hover:text-white text-lg">
                 Watch 2-Min Demo
               </button>
             </div>
             <p className="text-sm text-gray-400 mt-4">
-              No credit card required • Instant results • Trusted by 10,000+ professionals
+              Industry-leading AI technology • Instant results • Trusted by 10,000+ professionals
             </p>
           </div>
         </div>
