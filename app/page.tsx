@@ -12,11 +12,11 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex items-center">
-  <div className="text-left">
-    <div className="text-4xl font-extrabold text-blue-400 leading-none" style={{transform: 'scaleX(1.45)', transformOrigin: 'left'}}>KMP</div>
-    <div className="text-sm text-blue-400 font-medium">Know My Property</div>
-  </div>
-</div>
+              <div className="text-left">
+                <div className="text-4xl font-extrabold text-blue-400 leading-none" style={{transform: 'scaleX(1.45)', transformOrigin: 'left'}}>KMP</div>
+                <div className="text-sm text-blue-400 font-medium">Know My Property</div>
+              </div>
+            </div>
             <div className="hidden md:flex items-center space-x-8">
               <a href="#" className="text-gray-300 hover:text-blue-400">Solutions</a>
               <a href="#" className="text-gray-300 hover:text-blue-400">Pricing</a>
