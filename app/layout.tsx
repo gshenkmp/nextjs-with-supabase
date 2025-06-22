@@ -26,6 +26,7 @@ export default function RootLayout({
               <div className="hidden md:flex items-center space-x-8">
                 <a href="/solutions" className="text-gray-300 hover:text-blue-400">Solutions</a>
                 <a href="/pricing" className="text-gray-300 hover:text-blue-400">Pricing</a>
+                <a href="/insights" className="text-gray-300 hover:text-blue-400">Business Insights</a>
                 <a href="/resources" className="text-gray-300 hover:text-blue-400">Resources</a>
                 <a href="/about" className="text-gray-300 hover:text-blue-400">About</a>
                 <a href="/dashboard" className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 font-medium">
