@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-gray-900 text-white">
@@ -43,9 +45,9 @@ export default function HomePage() {
                 Win more listings and close deals faster with instant property intelligence. 
                 Provide clients with detailed condition reports and market insights.
               </p>
-              <a href="/solutions" className="text-blue-400 hover:text-blue-300 font-medium">
+              <Link href="/solutions" className="text-blue-400 hover:text-blue-300 font-medium">
                 Learn more →
-              </a>
+              </Link>
             </div>
 
             {/* Lenders & Mortgage */}
@@ -58,9 +60,9 @@ export default function HomePage() {
                 Reduce inspection costs and speed up loan processing. Get automated 
                 property condition assessments for better risk evaluation.
               </p>
-              <a href="/solutions" className="text-blue-400 hover:text-blue-300 font-medium">
+              <Link href="/solutions" className="text-blue-400 hover:text-blue-300 font-medium">
                 Learn more →
-              </a>
+              </Link>
             </div>
 
             {/* Property Investors */}
@@ -73,9 +75,9 @@ export default function HomePage() {
                 Scale your investment analysis with bulk property assessments. 
                 Identify hidden risks and opportunities across entire portfolios.
               </p>
-              <a href="/solutions" className="text-blue-400 hover:text-blue-300 font-medium">
+              <Link href="/solutions" className="text-blue-400 hover:text-blue-300 font-medium">
                 Learn more →
-              </a>
+              </Link>
             </div>
           </div>
         </div>

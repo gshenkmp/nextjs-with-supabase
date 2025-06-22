@@ -2,7 +2,19 @@ import { updateSession } from "@/lib/supabase/middleware";
 import { type NextRequest } from "next/server";
 
 export async function middleware(request: NextRequest) {
-  return await updateSession(request);
+  // Only run auth checks on protected routes and dashboard
+  const { pathname } = request.nextUrl;
+  
+  // Routes that need authentication
+  const protectedPaths = ['/protected', '/dashboard'];
+  const needsAuth = protectedPaths.some(path => pathname.startsWith(path));
+  
+  if (needsAuth) {
+    return await updateSession(request);
+  }
+  
+  // For all other routes (/, /solutions, /pricing, etc.), allow through without auth check
+  return;
 }
 
 export const config = {

@@ -2,6 +2,7 @@
 
 import './globals.css'
 import { useState } from 'react';
+import Link from 'next/link';
 
 export default function RootLayout({
   children,
@@ -18,20 +19,20 @@ export default function RootLayout({
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between h-16">
               <div className="flex items-center">
-                <a href="/" className="text-left">
+                <Link href="/" className="text-left">
                   <div className="text-4xl font-extrabold text-blue-400 leading-none" style={{transform: 'scaleX(1.45)', transformOrigin: 'left'}}>KMP</div>
                   <div className="text-sm text-blue-400 font-medium">Know My Property</div>
-                </a>
+                </Link>
               </div>
               <div className="hidden md:flex items-center space-x-8">
-                <a href="/solutions" className="text-gray-300 hover:text-blue-400">Solutions</a>
-                <a href="/pricing" className="text-gray-300 hover:text-blue-400">Pricing</a>
-                <a href="/insights" className="text-gray-300 hover:text-blue-400">Business Insights</a>
-                <a href="/resources" className="text-gray-300 hover:text-blue-400">Resources</a>
-                <a href="/about" className="text-gray-300 hover:text-blue-400">About</a>
-                <a href="/dashboard" className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 font-medium">
+                <Link href="/solutions" className="text-gray-300 hover:text-blue-400">Solutions</Link>
+                <Link href="/pricing" className="text-gray-300 hover:text-blue-400">Pricing</Link>
+                <Link href="/insights" className="text-gray-300 hover:text-blue-400">Business Insights</Link>
+                <Link href="/resources" className="text-gray-300 hover:text-blue-400">Resources</Link>
+                <Link href="/about" className="text-gray-300 hover:text-blue-400">About</Link>
+                <Link href="/dashboard" className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 font-medium">
                   Dashboard
-                </a>
+                </Link>
               </div>
               {/* Mobile menu button */}
               <div className="md:hidden flex items-center">
@@ -50,13 +51,13 @@ export default function RootLayout({
               isMobileMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0 pointer-events-none'
             }`}>
               <div className="px-2 pt-2 pb-3 space-y-1">
-                <a href="/solutions" className="block px-3 py-2 text-gray-300 hover:text-blue-400">Solutions</a>
-                <a href="/pricing" className="block px-3 py-2 text-gray-300 hover:text-blue-400">Pricing</a>
-                <a href="/resources" className="block px-3 py-2 text-gray-300 hover:text-blue-400">Resources</a>
-                <a href="/about" className="block px-3 py-2 text-gray-300 hover:text-blue-400">About</a>
-                <a href="/dashboard" className="w-full mt-2 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 font-medium block text-center">
+                <Link href="/solutions" className="block px-3 py-2 text-gray-300 hover:text-blue-400">Solutions</Link>
+                <Link href="/pricing" className="block px-3 py-2 text-gray-300 hover:text-blue-400">Pricing</Link>
+                <Link href="/resources" className="block px-3 py-2 text-gray-300 hover:text-blue-400">Resources</Link>
+                <Link href="/about" className="block px-3 py-2 text-gray-300 hover:text-blue-400">About</Link>
+                <Link href="/dashboard" className="w-full mt-2 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 font-medium block text-center">
                   Dashboard
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -80,28 +81,28 @@ export default function RootLayout({
               <div>
                 <h4 className="font-semibold mb-4">Solutions</h4>
                 <ul className="space-y-2 text-gray-400">
-                  <li><a href="/solutions" className="hover:text-white">Property Reports</a></li>
-                  <li><a href="/solutions" className="hover:text-white">Risk Assessment</a></li>
-                  <li><a href="/solutions" className="hover:text-white">Portfolio Analysis</a></li>
-                  <li><a href="/solutions" className="hover:text-white">API Access</a></li>
+                  <li><Link href="/solutions" className="hover:text-white">Property Reports</Link></li>
+                  <li><Link href="/solutions" className="hover:text-white">Risk Assessment</Link></li>
+                  <li><Link href="/solutions" className="hover:text-white">Portfolio Analysis</Link></li>
+                  <li><Link href="/solutions" className="hover:text-white">API Access</Link></li>
                 </ul>
               </div>
               <div>
                 <h4 className="font-semibold mb-4">Industries</h4>
                 <ul className="space-y-2 text-gray-400">
-                  <li><a href="/solutions" className="hover:text-white">Real Estate</a></li>
-                  <li><a href="/solutions" className="hover:text-white">Lending</a></li>
-                  <li><a href="/solutions" className="hover:text-white">Investment</a></li>
-                  <li><a href="/solutions" className="hover:text-white">Insurance</a></li>
+                  <li><Link href="/solutions" className="hover:text-white">Real Estate</Link></li>
+                  <li><Link href="/solutions" className="hover:text-white">Lending</Link></li>
+                  <li><Link href="/solutions" className="hover:text-white">Investment</Link></li>
+                  <li><Link href="/solutions" className="hover:text-white">Insurance</Link></li>
                 </ul>
               </div>
               <div>
                 <h4 className="font-semibold mb-4">Company</h4>
                 <ul className="space-y-2 text-gray-400">
-                  <li><a href="/about" className="hover:text-white">About Us</a></li>
-                  <li><a href="/contact" className="hover:text-white">Contact</a></li>
-                  <li><a href="/privacy" className="hover:text-white">Privacy Policy</a></li>
-                  <li><a href="/terms" className="hover:text-white">Terms of Service</a></li>
+                  <li><Link href="/about" className="hover:text-white">About Us</Link></li>
+                  <li><Link href="/contact" className="hover:text-white">Contact</Link></li>
+                  <li><Link href="/privacy" className="hover:text-white">Privacy Policy</Link></li>
+                  <li><Link href="/terms" className="hover:text-white">Terms of Service</Link></li>
                 </ul>
               </div>
             </div>

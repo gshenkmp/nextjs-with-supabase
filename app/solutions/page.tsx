@@ -1,28 +1,8 @@
+import Link from 'next/link';
+
 export default function SolutionsPage() {
   return (
     <div className="min-h-screen bg-gray-900 text-white">
-      {/* Navigation - you can copy from homepage or create a shared component */}
-      <nav className="bg-gray-900 shadow-sm border-b border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            <div className="flex items-center">
-              <a href="/" className="text-left">
-                <div className="text-3xl font-bold text-blue-400 leading-none" style={{letterSpacing: '8px'}}>KMP</div>
-                <div className="text-sm text-blue-400 font-medium">Know My Property</div>
-              </a>
-            </div>
-            <div className="hidden md:flex items-center space-x-8">
-              <a href="/solutions" className="text-blue-400 font-medium">Solutions</a>
-              <a href="/pricing" className="text-gray-300 hover:text-blue-400">Pricing</a>
-              <a href="/resources" className="text-gray-300 hover:text-blue-400">Resources</a>
-              <a href="/about" className="text-gray-300 hover:text-blue-400">About</a>
-              <a href="/dashboard" className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 font-medium">
-                Dashboard
-              </a>
-            </div>
-          </div>
-        </div>
-      </nav>
 
       {/* Hero Section */}
       <section className="py-20">
@@ -175,12 +155,12 @@ export default function SolutionsPage() {
             Choose the solution that fits your needs and start making smarter property decisions today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/dashboard" className="bg-blue-600 text-white px-8 py-3 rounded-md font-semibold hover:bg-blue-700 text-lg">
+            <Link href="/dashboard" className="bg-blue-600 text-white px-8 py-3 rounded-md font-semibold hover:bg-blue-700 text-lg">
               Start Free Trial
-            </a>
-            <a href="/pricing" className="border border-gray-600 text-gray-300 px-8 py-3 rounded-md font-semibold hover:bg-gray-700 text-lg">
+            </Link>
+            <Link href="/pricing" className="border border-gray-600 text-gray-300 px-8 py-3 rounded-md font-semibold hover:bg-gray-700 text-lg">
               View Pricing
-            </a>
+            </Link>
           </div>
         </div>
       </section>
