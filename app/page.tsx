@@ -5,12 +5,12 @@ export default function HomePage() {
       <section className="bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            <h1 className="text-5xl md:text-5xl font-bold mb-6">
               Instant AI-Powered Property Intelligence
               <br />
               <span className="text-blue-400">Make Smarter Real Estate Decisions</span>
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-gray-300">
+            <p className="text-xl md:text-xl mb-8 text-gray-300">
               Get comprehensive property reports in under 30 seconds. Trusted by real estate professionals, 
               lenders, and investors to assess risk and unlock opportunities.
             </p>
