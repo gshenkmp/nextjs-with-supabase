@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 export default function PricingPage() {
   return (
     <div className="min-h-screen bg-gray-900 text-white">
@@ -176,7 +174,7 @@ export default function PricingPage() {
             </div>
             <div className="bg-gray-900 p-6 rounded-lg">
               <h3 className="text-lg font-semibold mb-2">What happens if I exceed my monthly report limit?</h3>
-              <p className="text-gray-400">You'll receive notifications as you approach your limit. You can upgrade your plan or purchase additional reports as needed.</p>
+              <p className="text-gray-400">You&apos;ll receive notifications as you approach your limit. You can upgrade your plan or purchase additional reports as needed.</p>
             </div>
           </div>
         </div>

@@ -26,7 +26,7 @@ export default function AboutPage() {
                 We believe that every property decision should be backed by comprehensive, accurate data. Our mission is to democratize access to professional-grade property intelligence, making it instant, affordable, and accessible to everyone in the real estate ecosystem.
               </p>
               <p className="text-gray-300 text-lg">
-                By combining advanced AI with industry expertise, we're eliminating guesswork and enabling data-driven decisions that protect investments and uncover opportunities.
+                By combining advanced AI with industry expertise, we&apos;re eliminating guesswork and enabling data-driven decisions that protect investments and uncover opportunities.
               </p>
             </div>
             <div className="bg-gray-800 p-8 rounded-lg border border-gray-700">
@@ -67,7 +67,7 @@ export default function AboutPage() {
               </div>
               <h3 className="text-xl font-semibold mb-4">Accuracy</h3>
               <p className="text-gray-400">
-                We're committed to providing the most accurate and reliable property intelligence available, backed by rigorous testing and continuous improvement.
+                We&apos;re committed to providing the most accurate and reliable property intelligence available, backed by rigorous testing and continuous improvement.
               </p>
             </div>
 
@@ -91,7 +91,7 @@ export default function AboutPage() {
               </div>
               <h3 className="text-xl font-semibold mb-4">Accessibility</h3>
               <p className="text-gray-400">
-                Professional-grade property intelligence shouldn't be limited to large institutions. We make powerful tools accessible to professionals of all sizes.
+                Professional-grade property intelligence shouldn&apos;t be limited to large institutions. We make powerful tools accessible to professionals of all sizes.
               </p>
             </div>
           </div>

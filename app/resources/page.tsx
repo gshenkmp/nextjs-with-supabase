@@ -11,7 +11,7 @@ export default function ResourcesPage() {
             <span className="text-blue-400 block">Learning Center</span>
           </h1>
           <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            Everything you need to get the most out of KnowMyProperty's AI-powered property intelligence platform.
+            Everything you need to get the most out of KnowMyProperty&apos;s AI-powered property intelligence platform.
           </p>
         </div>
       </section>
