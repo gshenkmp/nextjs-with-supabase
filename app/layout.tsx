@@ -3,6 +3,7 @@
 import './globals.css'
 import { useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function RootLayout({
   children,
@@ -10,6 +11,32 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Helper function to check if a link is active
+  const isActive = (path: string) => {
+    if (path === '/' && pathname === '/') return true;
+    if (path !== '/' && pathname.startsWith(path)) return true;
+    return false;
+  };
+
+  // Helper function to get link classes
+  const getLinkClasses = (path: string) => {
+    const baseClasses = "transition-colors duration-200";
+    if (isActive(path)) {
+      return `${baseClasses} text-blue-400`;
+    }
+    return `${baseClasses} text-gray-300 hover:text-blue-400`;
+  };
+
+  // Helper function for mobile link classes
+  const getMobileLinkClasses = (path: string) => {
+    const baseClasses = "block px-3 py-2 transition-colors duration-200";
+    if (isActive(path)) {
+      return `${baseClasses} text-blue-400 bg-blue-900/20 rounded-md`;
+    }
+    return `${baseClasses} text-gray-300 hover:text-blue-400`;
+  };
 
   return (
     <html lang="en">
@@ -25,12 +52,12 @@ export default function RootLayout({
                 </Link>
               </div>
               <div className="hidden md:flex items-center space-x-8">
-                <Link href="/solutions" className="text-gray-300 hover:text-blue-400">Solutions</Link>
-                <Link href="/pricing" className="text-gray-300 hover:text-blue-400">Pricing</Link>
-                <Link href="/insights" className="text-gray-300 hover:text-blue-400">Business Insights</Link>
-                <Link href="/resources" className="text-gray-300 hover:text-blue-400">Resources</Link>
-                <Link href="/about" className="text-gray-300 hover:text-blue-400">About</Link>
-                <Link href="/dashboard" className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 font-medium">
+                <Link href="/solutions" className={getLinkClasses('/solutions')}>Solutions</Link>
+                <Link href="/pricing" className={getLinkClasses('/pricing')}>Pricing</Link>
+                <Link href="/insights" className={getLinkClasses('/insights')}>Business Insights</Link>
+                <Link href="/resources" className={getLinkClasses('/resources')}>Resources</Link>
+                <Link href="/about" className={getLinkClasses('/about')}>About</Link>
+                <Link href="/dashboard" className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 font-medium transition-colors duration-200">
                   Dashboard
                 </Link>
               </div>
@@ -46,15 +73,25 @@ export default function RootLayout({
                 </button>
               </div>
             </div>
+            
             {/* Mobile menu */}
-            <div className={`absolute top-16 right-0 w-64 bg-gray-900 border-l border-gray-800 shadow-lg z-50 md:hidden transition-all duration-300 ease-in-out ${
+            {/* Backdrop - click anywhere to close menu */}
+            {isMobileMenuOpen && (
+              <div 
+                className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+                onClick={() => setIsMobileMenuOpen(false)}
+              />
+            )}
+
+            {/* Mobile menu panel */}
+            <div className={`fixed top-16 right-0 w-64 bg-gray-900 border-l border-gray-800 shadow-lg z-50 md:hidden transition-all duration-300 ease-in-out ${
               isMobileMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0 pointer-events-none'
             }`}>
               <div className="px-2 pt-2 pb-3 space-y-1">
-                <Link href="/solutions" className="block px-3 py-2 text-gray-300 hover:text-blue-400">Solutions</Link>
-                <Link href="/pricing" className="block px-3 py-2 text-gray-300 hover:text-blue-400">Pricing</Link>
-                <Link href="/resources" className="block px-3 py-2 text-gray-300 hover:text-blue-400">Resources</Link>
-                <Link href="/about" className="block px-3 py-2 text-gray-300 hover:text-blue-400">About</Link>
+                <Link href="/solutions" className={getMobileLinkClasses('/solutions')}>Solutions</Link>
+                <Link href="/pricing" className={getMobileLinkClasses('/pricing')}>Pricing</Link>
+                <Link href="/resources" className={getMobileLinkClasses('/resources')}>Resources</Link>
+                <Link href="/about" className={getMobileLinkClasses('/about')}>About</Link>
                 <Link href="/dashboard" className="w-full mt-2 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 font-medium block text-center">
                   Dashboard
                 </Link>
