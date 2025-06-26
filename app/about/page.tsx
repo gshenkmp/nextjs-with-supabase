@@ -6,12 +6,12 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          <h1 className="text-3xl md:text-5xl lg:text-5x1 font-bold mb-6">
             Transforming Real Estate with
-            <span className="text-blue-400 block">Artificial Intelligence</span>
+            <span className="text-blue-400 block">Machine Learning</span>
           </h1>
           <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            KnowMyProperty combines cutting-edge AI technology with deep real estate expertise to deliver instant, accurate property intelligence for professionals worldwide.
+            KnowMyProperty combines cutting-edge AI and ML technology with deep real estate expertise to deliver instant, accurate property intelligence for professionals worldwide.
           </p>
         </div>
       </section>
