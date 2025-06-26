@@ -1,9 +1,10 @@
 "use client";
 
 import './globals.css'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { createClient } from '@/lib/supabase/client';
 
 export default function RootLayout({
   children,
@@ -11,7 +12,38 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
+
+  // Check authentication status
+  useEffect(() => {
+    const checkAuth = async () => {
+      const supabase = createClient();
+      const { data: { session } } = await supabase.auth.getSession();
+      setIsAuthenticated(!!session);
+    };
+
+    checkAuth();
+
+    // Listen for auth changes
+    const supabase = createClient();
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      setIsAuthenticated(!!session);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const handleLogout = async () => {
+    try {
+      const supabase = createClient();
+      await supabase.auth.signOut();
+      router.push('/');
+    } catch (error) {
+      console.error('Logout failed:', error);
+    }
+  };
 
   // Helper function to check if a link is active
   const isActive = (path: string) => {
@@ -57,10 +89,27 @@ export default function RootLayout({
                 <Link href="/insights" className={getLinkClasses('/insights')}>Business Insights</Link>
                 <Link href="/resources" className={getLinkClasses('/resources')}>Resources</Link>
                 <Link href="/about" className={getLinkClasses('/about')}>About</Link>
-                <Link href="/dashboard" className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 font-medium transition-colors duration-200">
-                  Dashboard
-                </Link>
+                
+                {/* Show different buttons based on auth status */}
+                {isAuthenticated ? (
+                  <div className="flex items-center space-x-4">
+                    <Link href="/protected/dashboard" className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 font-medium transition-colors duration-200">
+                      Dashboard
+                    </Link>
+                    <button 
+                      onClick={handleLogout}
+                      className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 font-medium transition-colors duration-200"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                ) : (
+                  <Link href="/dashboard" className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 font-medium transition-colors duration-200">
+                    Dashboard
+                  </Link>
+                )}
               </div>
+              
               {/* Mobile menu button */}
               <div className="md:hidden flex items-center">
                 <button 
@@ -92,9 +141,25 @@ export default function RootLayout({
                 <Link href="/pricing" className={getMobileLinkClasses('/pricing')}>Pricing</Link>
                 <Link href="/resources" className={getMobileLinkClasses('/resources')}>Resources</Link>
                 <Link href="/about" className={getMobileLinkClasses('/about')}>About</Link>
-                <Link href="/dashboard" className="w-full mt-2 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 font-medium block text-center">
-                  Dashboard
-                </Link>
+                
+                {/* Mobile auth buttons */}
+                {isAuthenticated ? (
+                  <div className="pt-2 space-y-2">
+                    <Link href="/protected/dashboard" className="w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 font-medium block text-center">
+                      Dashboard
+                    </Link>
+                    <button 
+                      onClick={handleLogout}
+                      className="w-full bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 font-medium"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                ) : (
+                  <Link href="/dashboard" className="w-full mt-2 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 font-medium block text-center">
+                    Dashboard
+                  </Link>
+                )}
               </div>
             </div>
           </div>
