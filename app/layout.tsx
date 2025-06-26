@@ -39,10 +39,16 @@ export default function RootLayout({
     try {
       const supabase = createClient();
       await supabase.auth.signOut();
+      setIsMobileMenuOpen(false); // Close mobile menu
       router.push('/');
     } catch (error) {
       console.error('Logout failed:', error);
     }
+  };
+
+  // Helper function to close mobile menu
+  const handleMobileNavClick = () => {
+    setIsMobileMenuOpen(false);
   };
 
   // Helper function to check if a link is active
@@ -78,7 +84,7 @@ export default function RootLayout({
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between h-16">
               <div className="flex items-center">
-                <Link href="/" className="text-left">
+                <Link href="/" className="text-left" onClick={handleMobileNavClick}>
                   <div className="text-4xl font-extrabold text-blue-400 leading-none" style={{transform: 'scaleX(1.45)', transformOrigin: 'left'}}>KMP</div>
                   <div className="text-sm text-blue-400 font-medium">Know My Property</div>
                 </Link>
@@ -105,7 +111,7 @@ export default function RootLayout({
                   </div>
                 ) : (
                   <Link href="/dashboard" className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 font-medium transition-colors duration-200">
-                    Login
+                    Dashboard
                   </Link>
                 )}
               </div>
@@ -127,7 +133,7 @@ export default function RootLayout({
             {/* Backdrop - click anywhere to close menu */}
             {isMobileMenuOpen && (
               <div 
-                className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+                className="fixed inset-0 bg-black bg-opacity-70 z-40 md:hidden"
                 onClick={() => setIsMobileMenuOpen(false)}
               />
             )}
@@ -140,16 +146,50 @@ export default function RootLayout({
               {/* Main Navigation - Top section */}
               <div className="flex-1 px-2 pt-4 pb-3">
                 <div className="space-y-1">
-                  <Link href="/solutions" className={getMobileLinkClasses('/solutions')}>Solutions</Link>
-                  <Link href="/pricing" className={getMobileLinkClasses('/pricing')}>Pricing</Link>
-                  <Link href="/insights" className={getMobileLinkClasses('/insights')}>Business Insights</Link>
-                  <Link href="/resources" className={getMobileLinkClasses('/resources')}>Resources</Link>
-                  <Link href="/about" className={getMobileLinkClasses('/about')}>About</Link>
+                  <Link 
+                    href="/solutions" 
+                    className={getMobileLinkClasses('/solutions')}
+                    onClick={handleMobileNavClick}
+                  >
+                    Solutions
+                  </Link>
+                  <Link 
+                    href="/pricing" 
+                    className={getMobileLinkClasses('/pricing')}
+                    onClick={handleMobileNavClick}
+                  >
+                    Pricing
+                  </Link>
+                  <Link 
+                    href="/insights" 
+                    className={getMobileLinkClasses('/insights')}
+                    onClick={handleMobileNavClick}
+                  >
+                    Business Insights
+                  </Link>
+                  <Link 
+                    href="/resources" 
+                    className={getMobileLinkClasses('/resources')}
+                    onClick={handleMobileNavClick}
+                  >
+                    Resources
+                  </Link>
+                  <Link 
+                    href="/about" 
+                    className={getMobileLinkClasses('/about')}
+                    onClick={handleMobileNavClick}
+                  >
+                    About
+                  </Link>
                   
                   {/* Dashboard button in main nav area */}
                   {isAuthenticated && (
                     <div className="pt-4">
-                      <Link href="/protected/dashboard" className="w-full bg-blue-600 text-white px-4 py-3 rounded-md hover:bg-blue-700 font-medium block text-center">
+                      <Link 
+                        href="/protected/dashboard" 
+                        className="w-full bg-blue-600 text-white px-4 py-3 rounded-md hover:bg-blue-700 font-medium block text-center"
+                        onClick={handleMobileNavClick}
+                      >
                         Dashboard
                       </Link>
                     </div>
@@ -158,8 +198,12 @@ export default function RootLayout({
                   {/* Login button for non-authenticated users */}
                   {!isAuthenticated && (
                     <div className="pt-4">
-                      <Link href="/dashboard" className="w-full bg-blue-600 text-white px-4 py-3 rounded-md hover:bg-blue-700 font-medium block text-center">
-                        Login
+                      <Link 
+                        href="/dashboard" 
+                        className="w-full bg-blue-600 text-white px-4 py-3 rounded-md hover:bg-blue-700 font-medium block text-center"
+                        onClick={handleMobileNavClick}
+                      >
+                        Get Started
                       </Link>
                     </div>
                   )}
