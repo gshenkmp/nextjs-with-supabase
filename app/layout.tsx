@@ -105,7 +105,7 @@ export default function RootLayout({
                   </div>
                 ) : (
                   <Link href="/dashboard" className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 font-medium transition-colors duration-200">
-                    Dashboard
+                    Login
                   </Link>
                 )}
               </div>
@@ -132,35 +132,54 @@ export default function RootLayout({
               />
             )}
 
-            {/* Mobile menu panel */}
-            <div className={`fixed top-16 right-0 w-64 bg-gray-900 border-l border-gray-800 shadow-lg z-50 md:hidden transition-all duration-300 ease-in-out ${
+            {/* Mobile menu panel - Full height with logout at bottom */}
+            <div className={`fixed top-16 right-0 w-64 h-[calc(100vh-4rem)] bg-gray-900 border-l border-gray-800 shadow-lg z-50 md:hidden transition-all duration-300 ease-in-out flex flex-col ${
               isMobileMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0 pointer-events-none'
             }`}>
-              <div className="px-2 pt-2 pb-3 space-y-1">
-                <Link href="/solutions" className={getMobileLinkClasses('/solutions')}>Solutions</Link>
-                <Link href="/pricing" className={getMobileLinkClasses('/pricing')}>Pricing</Link>
-                <Link href="/resources" className={getMobileLinkClasses('/resources')}>Resources</Link>
-                <Link href="/about" className={getMobileLinkClasses('/about')}>About</Link>
-                
-                {/* Mobile auth buttons */}
-                {isAuthenticated ? (
-                  <div className="pt-2 space-y-2">
-                    <Link href="/protected/dashboard" className="w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 font-medium block text-center">
-                      Dashboard
-                    </Link>
-                    <button 
-                      onClick={handleLogout}
-                      className="w-full bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 font-medium"
-                    >
-                      Logout
-                    </button>
-                  </div>
-                ) : (
-                  <Link href="/dashboard" className="w-full mt-2 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 font-medium block text-center">
-                    Dashboard
-                  </Link>
-                )}
+              
+              {/* Main Navigation - Top section */}
+              <div className="flex-1 px-2 pt-4 pb-3">
+                <div className="space-y-1">
+                  <Link href="/solutions" className={getMobileLinkClasses('/solutions')}>Solutions</Link>
+                  <Link href="/pricing" className={getMobileLinkClasses('/pricing')}>Pricing</Link>
+                  <Link href="/insights" className={getMobileLinkClasses('/insights')}>Business Insights</Link>
+                  <Link href="/resources" className={getMobileLinkClasses('/resources')}>Resources</Link>
+                  <Link href="/about" className={getMobileLinkClasses('/about')}>About</Link>
+                  
+                  {/* Dashboard button in main nav area */}
+                  {isAuthenticated && (
+                    <div className="pt-4">
+                      <Link href="/protected/dashboard" className="w-full bg-blue-600 text-white px-4 py-3 rounded-md hover:bg-blue-700 font-medium block text-center">
+                        Dashboard
+                      </Link>
+                    </div>
+                  )}
+                  
+                  {/* Login button for non-authenticated users */}
+                  {!isAuthenticated && (
+                    <div className="pt-4">
+                      <Link href="/dashboard" className="w-full bg-blue-600 text-white px-4 py-3 rounded-md hover:bg-blue-700 font-medium block text-center">
+                        Login
+                      </Link>
+                    </div>
+                  )}
+                </div>
               </div>
+
+              {/* Logout Section - Bottom (only show if authenticated) */}
+              {isAuthenticated && (
+                <div className="border-t border-gray-700 p-4">
+                  <div className="text-center mb-3">
+                    <p className="text-gray-400 text-sm">Signed in as user</p>
+                  </div>
+                  <button 
+                    onClick={handleLogout}
+                    className="w-full bg-gray-700 text-white px-4 py-3 rounded-md hover:bg-red-600 font-medium transition-colors duration-200"
+                  >
+                    Sign Out
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </nav>
