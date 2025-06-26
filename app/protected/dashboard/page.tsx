@@ -1,23 +1,8 @@
 "use client";
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { createClient } from '@/lib/supabase/client';
 
 export default function ProtectedDashboard() {
-  const router = useRouter();
-
-  const handleLogout = async () => {
-    try {
-      const supabase = createClient();
-      await supabase.auth.signOut();
-      router.push('/');
-    } catch (error) {
-      console.error('Logout failed:', error);
-    }
-  };
   return (
     <div className="min-h-screen bg-gray-900 text-white">
-
       {/* Dashboard Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Welcome Section */}
