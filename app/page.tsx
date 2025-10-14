@@ -9,8 +9,6 @@ export default function HomePage() {
           <div className="text-center">
             <h1 className="text-5xl md:text-5xl font-bold mb-6">
               Instant AI-Powered Property Intelligence
-              <br />
-              <span className="text-blue-400">Make Smarter Real Estate Decisions</span>
             </h1>
             <p className="text-xl md:text-xl mb-8 text-gray-300">
               Get comprehensive property reports in under 30 seconds. Trusted by real estate professionals, 
